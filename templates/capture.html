@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengumpulan Data - Sign Language Detector</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Pengumpulan Data</h1>
+      <a href="/" class="btn-back">← Kembali</a>
+    </header>
+
+    <main>
+      <div class="capture-box">
+        <h2>Jalankan Program Dataset</h2>
+        <p>Untuk mengumpulkan data landmark tangan, jalankan program berikut di terminal:</p>
+        <code>python capture_dataset.py</code>
+        <p>Ikuti instruksi di layar untuk memasukkan huruf dan merekam landmark tangan.</p>
+        <p>Setelah selesai, gunakan <code>python train_model.py</code> untuk melatih model.</p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

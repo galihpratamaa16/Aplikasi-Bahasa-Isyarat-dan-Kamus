@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamus - Sign Language Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .dictionary-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            padding: 14px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .sign-card {
+            background-color: #2f3b4f;
+            border-radius: 14px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: default;
+            min-height: 260px;
+            display: grid;
+            grid-template-rows: auto 48px;
+        }
+
+        .sign-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+        }
+
+        .sign-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: #f8fafc;
+            padding: 10px;
+        }
+
+        .sign-name {
+            color: #f8fafc;
+            padding: 10px 12px;
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #30405a;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .app-container {
+            min-height: auto;
+        }
+
+        main {
+            padding: 10px 14px 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .dictionary-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dictionary-container {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .sign-card {
+                min-height: 220px;
+            }
+
+            .sign-image {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Kamus Huruf Bahasa Isyarat</h1>
+            <a href="/" class="btn-back">← Kembali</a>
+        </header>
+
+        <main>
+            <div class="dictionary-container">
+                {% for sign in signs %}
+                <div class="sign-card">
+                    <img src="{{ url_for('static', filename=sign.image) }}" alt="{{ sign.name }}" class="sign-image">
+                    <div class="sign-name">{{ sign.name }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

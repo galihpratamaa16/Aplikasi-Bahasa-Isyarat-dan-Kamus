@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Aksara Isyarat{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand"><a href="{{ url_for('index') }}">Aksara Isyarat</a></div>
+    <nav>
+      <a href="{{ url_for('index') }}">Simulasi</a>
+      <a href="{{ url_for('dictionary') }}">Kamus</a>
+    </nav>
+  </header>
+
+  <main class="page-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <p>Jalankan secara lokal dengan <code>python app.py</code>. Untuk hasil terbaik, pastikan <code>model.pkl</code> sudah dibuat dengan <code>python train_model.py</code>.</p>
+  </footer>
+  <script>
+    const letters = {{ letters | tojson | safe }};
+    const modelReady = {{ model_ready | tojson | safe }};
+  </script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

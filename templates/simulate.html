@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulasi - Sign Language Detector</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Simulasi Huruf Bahasa Isyarat</h1>
+      <a href="/" class="btn-back">← Kembali</a>
+    </header>
+
+    <main>
+      <div class="simulate-frame">
+        <div class="video-panel">
+          <video id="video" autoplay playsinline muted></video>
+        </div>
+
+        <div class="simulate-panel">
+          <div class="info-box simulate-info-box">
+            <div class="status-row">
+              <div>
+                <p>Target</p>
+                <strong id="targetLetter">A</strong>
+              </div>
+              <div>
+                <p>Hasil</p>
+                <strong id="predictedLetter">-</strong>
+              </div>
+            </div>
+
+            <img id="targetImage" src="{{ url_for('static', filename='signs/Huruf A.png') }}" alt="Target sign" class="target-preview" />
+            <p id="matchText" class="validation-text">Tekan Mulai untuk memulai deteksi.</p>
+            <p id="confidenceText" class="confidence-text"></p>
+          </div>
+
+          <div class="button-group simulate-buttons">
+            <button id="startButton" class="btn btn-primary" {% if not model_ready %}disabled{% endif %}>Mulai</button>
+            <button id="stopButton" class="btn btn-secondary" disabled>Berhenti</button>
+            <button id="randomButton" class="btn btn-primary">Acak</button>
+          </div>
+
+          {% if not model_ready %}
+          <div class="error-box" style="margin-top: 10px;">
+            Model belum tersedia. Jalankan <code>python train_model.py</code> untuk membuat <code>model.pkl</code>, lalu muat ulang halaman ini.
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const letters = {{ letters | tojson | safe }};
+    const modelReady = {{ model_ready | tojson | safe }};
+  </script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

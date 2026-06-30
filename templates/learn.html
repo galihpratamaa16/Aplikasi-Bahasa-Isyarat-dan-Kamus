@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar - Sign Language Detector</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Pelajari Bahasa Isyarat</h1>
+      <a href="/" class="btn-back">← Kembali</a>
+    </header>
+
+    <main>
+      <div class="capture-box">
+        <h2>Cara Menggunakan Aplikasi</h2>
+        <p>Aplikasi ini membantu Anda mempelajari huruf bahasa isyarat dengan dukungan deteksi tangan menggunakan webcam.</p>
+        <ul style="text-align: left; max-width: 720px; margin: 0 auto;">
+          <li>Gunakan tombol <strong>Simulasi</strong> untuk mencoba membentuk huruf dengan tangan.</li>
+          <li>Gunakan tombol <strong>Kamus</strong> untuk melihat referensi gambar setiap huruf.</li>
+          <li>Untuk mengumpulkan data dan melatih model, gunakan program <code>capture_dataset.py</code> dan <code>train_model.py</code>.</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
